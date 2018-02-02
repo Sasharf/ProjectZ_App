@@ -1,16 +1,50 @@
-// http://ionicframework.com/docs/theming/
+.toast-success {
+    > div{
+         background-color:#32db64!important;
+     }
+  }
 
+.toast-error {
+    > div{
+         background-color:#f53d3d!important;
+     }
+  }
 
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
+.scroll-bar-indicator
+{
+	display: none;
+}
+
+::-webkit-scrollbar{ display:none; }
+
+.item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+    border-bottom-color: #593df5;
+    -webkit-box-shadow: inset 0 0px 0 0 #f53d3d;
+    box-shadow: inset 0 0px 0 0 #f53d3d; 
+}
+.item-md.item-input.item-input-has-focus .item-inner,
+.item-md.item-input.input-has-focus .item-inner {
+    border-bottom-color: #488aff;
+    -webkit-box-shadow: inset 0 0px 0 0 #488aff;
+    box-shadow: inset 0 0x 0 0 #488aff;
+}
+.list-md .item-input.item-input-has-focus:last-child,
+.list-md .item-input.input-has-focus:last-child {
+    border-bottom-color: #488aff;
+    -webkit-box-shadow: inset 0 0px 0 0 #488aff;
+    box-shadow: inset 0 0px 0 0 #488aff;
+}
+
+.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+border-bottom-color: #32db64;
+-webkit-box-shadow: inset 0 0px 0 0 #32db64;
+box-shadow: inset 0 0px 0 0 #32db64;
+}
+
+.list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child,
+.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child {
+  border-bottom-color: #32db64;
+  -webkit-box-shadow: inset 0 0px 0 0 #32db64;
+  box-shadow: inset 0 0px 0 0 #32db64;
+}

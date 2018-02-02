@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Plants list</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let plant of plants">
+      <button ion-item (click)="openItem(plant)">
+        <ion-avatar item-start>
+          <img [src]="plant.pic" />
+        </ion-avatar>
+        <h2>{{plant.plantName}}</h2>
+        <p><strong>Plant Family: </strong>{{plant.plantFamily}}</p>
+      </button>
+
+      <ion-item-options>
+        <button ion-button color="danger" (click)="deleteItem(plant)">
+            DELETE
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <p *ngIf="plants.length==0">Plants not added yet, press on the plus above to add one.</p>
+</ion-content>

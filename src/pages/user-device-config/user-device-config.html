@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Device configure</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="searchingWifi" style="text-align: center;">
+    <br>
+    <br> Detecting WiFi!
+    <br>
+    <br>
+    <ion-spinner name="bubbles"></ion-spinner>
+    <br>
+    <br>
+  </div>
+  <form *ngIf="form && !searchingWifi" [formGroup]="form" (ngSubmit)="confirmConfig()">
+    <ion-list no-lines>
+
+      <ion-item>
+        <ion-label floating>Choose network</ion-label>
+        <ion-select formControlName="ssid" (ionChange)="wifiChanged()">
+          <ion-option *ngFor="let network of networks" [value]="network.ssid + ':' + network.security">{{network.ssid}} - {{ network.security }}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item *ngIf="showPassword">
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <br>
+
+      <button ion-button full [disabled]="submitAttempt || !form.valid">
+        <ion-spinner *ngIf="submitAttempt" name="bubbles"></ion-spinner> Confirm</button>
+      <button ion-button full (click)="ioScan()" [disabled]="submitAttempt">Scan again</button>
+    </ion-list>
+  </form>
+</ion-content>

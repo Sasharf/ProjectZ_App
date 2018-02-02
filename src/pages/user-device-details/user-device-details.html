@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{item.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="item-detail" >
+    <h2>Plant name: {{item.name}}</h2>
+    <hr>
+    <h2>Profile</h2>
+    <div *ngIf="item.profile">
+      <p><strong>Current profile: </strong>{{item.profile.profileName}}</p>
+      <p><strong>Sun Needs: </strong>{{item.profile.sunNeeds}}</p>
+      <p><strong>Heat Min: </strong>{{item.profile.heatMin}}</p>
+      <p><strong>Heat Max: </strong>{{item.profile.heatMax}}</p>
+      <p><strong>moistMin: </strong>{{item.profile.moistMin}}</p>
+      <p><strong>moistMax: </strong>{{item.profile.moistMax}}</p>
+      <button ion-button full (click)="changeProfile()">Change profile</button>
+    </div>
+    <div *ngIf="!item.profile">
+      <P>Profile not set yet</P>
+      <button ion-button full (click)="changeProfile()">Set profile</button>
+    </div>
+  </div>
+</ion-content>
