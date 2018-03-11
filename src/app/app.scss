@@ -14,7 +14,8 @@
 {
 	display: none;
 }
-
+.my-popover .popover-content{ width: 170px; }
+.my-popover2 .popover-content{ width: 300px; }
 ::-webkit-scrollbar{ display:none; }
 
 .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {

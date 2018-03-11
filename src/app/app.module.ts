@@ -22,6 +22,17 @@ import { IonicStorageModule } from '@ionic/storage';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { SocketIoModule, Socket } from 'ng-socket-io';
+import { UserDeviceProvider } from '../providers/user-device/user-device';
+import { ConfigProvider } from '../providers/config/config';
+import { SensorRecordProvider } from '../providers/sensor-record/sensor-record';
+import { WaterRecordProvider } from '../providers/water-record/water-record';
+import { RainRecordProvider } from '../providers/rain-record/rain-record';
+import { SettingsPopoverPageModule } from '../pages/settings-popover/settings-popover.module';
+import { InfoPopoverPageModule } from '../pages/info-popover/info-popover.module';
+import { CommandProvider } from '../providers/command/command';
+import { MessageProvider } from '../providers/message/message';
+import { MessageFeedProvider } from '../providers/message-feed/message-feed';
+import { UserProfileProvider } from '../providers/user-profile/user-profile';
 
 @Injectable()
 export class SocketOne extends Socket {
@@ -41,11 +52,13 @@ export class SocketOne extends Socket {
     HttpClientModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    SocketIoModule
+    SocketIoModule,
+    SettingsPopoverPageModule,
+    InfoPopoverPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
   ],
   providers: [
     StatusBar,
@@ -65,6 +78,15 @@ export class SocketOne extends Socket {
     AndroidPermissions,
     LocationAccuracy,
     SocketOne,
+    UserDeviceProvider,
+    ConfigProvider,
+    SensorRecordProvider,
+    WaterRecordProvider,
+    RainRecordProvider,
+    CommandProvider,
+    MessageProvider,
+    MessageFeedProvider,
+    UserProfileProvider,
   ]
 })
 export class AppModule {}

@@ -1,9 +1,9 @@
 <ion-header>
 
   <ion-navbar>
-      <button ion-button [menuToggle]="menu1">
-          <ion-icon name="menu"></ion-icon>
-        </button>
+    <button ion-button [menuToggle]="menu1">
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Home</ion-title>
   </ion-navbar>
 
@@ -11,5 +11,43 @@
 
 
 <ion-content padding>
-Nothing to see here yet
+    <ion-card>
+        <ion-card-header>
+            <ion-icon name="md-mail"></ion-icon> 	&nbsp;Message feed
+          <hr>
+        </ion-card-header>
+      
+        <ion-list>
+          <ion-item>
+            <ion-icon name="cart" item-start></ion-icon>
+            Shopping
+          </ion-item>
+      
+          <button ion-item>
+            <ion-icon name="medical" item-start></ion-icon>
+            Hospital
+          </button>
+      
+          <button ion-item>
+            <ion-icon name="cafe" item-start></ion-icon>
+            Cafe
+          </button>
+      
+          <button ion-item>
+            <ion-icon name="paw" item-start></ion-icon>
+            Dog Park
+          </button>
+      
+          <button ion-item>
+            <ion-icon name="beer" item-start></ion-icon>
+            Pub
+          </button>
+      
+          <button ion-item>
+            <ion-icon name="planet" item-start></ion-icon>
+            Space
+          </button>
+      
+        </ion-list>
+      </ion-card>
 </ion-content>

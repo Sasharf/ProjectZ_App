@@ -15,29 +15,10 @@
 <ion-content padding>
   <div *ngIf="!form.controls['mac'].value">
     <p>Press on "Scan code" button and scan the barcode on the downside of your device</p>
-    <button ion-button full icon-left (click)="scanCode()">
+    <button ion-button full icon-left color="greenColor" (click)="scanCode()">
       <ion-icon name="ios-qr-scanner-outline"></ion-icon> Scan Code
     </button>
   </div>
-
-  <ion-card *ngIf="form.controls['mac'].value && !submited">
-    <ion-card-header>
-      Enter plant name:
-    </ion-card-header>
-
-    <ion-card-content>
-      <form *ngIf="form" [formGroup]="form" (ngSubmit)="addDeviceToUser()">
-        <ion-list>
-          <ion-item>
-            <ion-label floating>Name</ion-label>
-            <ion-input type="text" formControlName="name"></ion-input>
-          </ion-item>
-        </ion-list>
-        <br>
-        <button ion-button full type="submit" [disabled]="!form.valid">Confirm</button>
-      </form>
-    </ion-card-content>
-  </ion-card>
 
   <ion-card *ngIf="submited">
     <ion-card-content>
@@ -45,10 +26,10 @@
       <p>The device been linked to you.</p>
       <hr>
       <p>You need config your device before you will be able to use it.</p>
-      <p>To config plug the device to home router and connect your phone to the same network and press config</p>
+      <p>To config, plug the device to your home router and connect your phone to the same network and press config</p>
       <br>
       <br>
-      <button ion-button full (click)="configNow()">Config now</button>
+      <button ion-button full (click)="openConfigPage()">Config now</button>
       <button ion-button full (click)="configLater()">Config later</button>
     </ion-card-content>
   </ion-card>

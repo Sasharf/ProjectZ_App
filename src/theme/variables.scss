@@ -40,7 +40,12 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
-  myYellow: #dfdb1e
+  myYellow: #dfdb1e,
+  myGreen:  #54ce79,
+  myBrown: rgb(210, 105, 30),
+  myGrey:rgb(141, 141, 141),
+  greenColor : #95c22c,
+  welcomeGreen : #51AE29,
 );
 
 
@@ -54,8 +59,12 @@ $colors: (
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
-
+$segment-button-md-text-color-activated: white;
+$segment-button-md-border-color-activated: white;
+$popover-md-width: 150px;
+$toolbar-md-background: color($colors, greenColor);
+//$tabs-md-background: color($colors, soeshit);
+$tabs-md-tab-color-active: color($colors, greenColor);
 
 
 // App Windows Variables

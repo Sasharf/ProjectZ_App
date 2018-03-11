@@ -40,7 +40,14 @@ export class DeviceListPage {
   }
 
   deleteItem(item) {
-    //this.items.delete(item);
+    this.deviceProvider.removeDevice(item.mac).subscribe(data => {
+      if(data["success"]){
+        this.deviceProvider.getDevices().subscribe(data => {
+          if(data["success"])
+            this.items = data["answer"];
+        })
+      }
+    })
   }
   
   openItem(item: Item) {

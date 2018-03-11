@@ -48,12 +48,24 @@
         </ion-select>
       </ion-item>
 
-      
+      <ion-item>
+        <ion-label floating>Info</ion-label>
+        <ion-textarea type="text" formControlName="info"></ion-textarea>
+      </ion-item>
 
+      <ion-item>
+        <ion-label floating>Sun needs</ion-label>
+        <ion-select formControlName="sunNeeds">
+          <ion-option value="Full sun">Full sun</ion-option>
+          <ion-option value="Partial sun">Partial sun</ion-option>
+          <ion-option value="Shady">Shady</ion-option>
+          <ion-option value="Full shade">Full shade</ion-option>
+        </ion-select>
+      </ion-item>
     </ion-list>
   </form>
 
-  <ion-list no-lines>
+  <!-- <ion-list no-lines>
       <ion-item>
         Sun needs <ion-icon big name="ios-sunny-outline" style="display:initial;"></ion-icon>%
         <ion-badge item-end color="myYellow">{{sun}}</ion-badge>
@@ -64,7 +76,7 @@
           <ion-icon range-right small color="myYellow" name="md-sunny"></ion-icon>
         </ion-range>
       </ion-item>
-    </ion-list>
+    </ion-list> -->
 
   <ion-list no-lines>
     <ion-item>
@@ -87,7 +99,7 @@
       <ion-badge item-end color="danger">{{heat.upper}}</ion-badge>
     </ion-item>
     <ion-item>
-      <ion-range dualKnobs="true" [(ngModel)]="heat" min="0" max="100" step="10" color="danger" snaps="true" (ionChange)="heatChanged()">
+      <ion-range dualKnobs="true" [(ngModel)]="heat" min="0" max="50" step="2" color="danger" snaps="true" (ionChange)="heatChanged()">
         <ion-icon range-left small color="danger" name="thermometer"></ion-icon>
         <ion-icon range-right color="danger" name="thermometer"></ion-icon>
       </ion-range>

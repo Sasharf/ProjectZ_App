@@ -17,16 +17,11 @@ export class DeviceProvider {
     let response = this.api.get('devices/get').share();
     return response;
   }
-  getUserDevices(email){
+  removeDevice(mac){
     let data = {
-      email:email
+      mac: mac
     }
-    let response = this.api.post('devices/getUserDevices', data).share();
-    return response;
-  }
-
-  linkDeviceToUser(deviceProfile){
-    let response = this.api.post('devices/link', deviceProfile).share();
+    let response = this.api.post('devices/remove', data).share();
     return response;
   }
 }

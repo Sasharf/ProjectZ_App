@@ -15,15 +15,20 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
 
-  pages: any[] = [
+  pagesUser: any[] = [
+    { title: 'Plants family', component: 'FamilyListPage' },
+    { title: 'All plants', component: 'PlantListPage' },
+    // { title: 'Login', component: 'LoginPage' },
+    // { title: 'Signup', component: 'SignupPage' },
+  ]
+  pagesAdmin: any[] = [
     { title: 'Plants family', component: 'FamilyListPage' },
     { title: 'All plants', component: 'PlantListPage' },
     { title: 'Devices list', component: 'DeviceListPage' },
-    { title: 'Login', component: 'LoginPage' },
-    { title: 'Signup', component: 'SignupPage' },
-    { title: 'Test', component: 'UserDeviceConfigPage' },
+    // { title: 'Login', component: 'LoginPage' },
+    // { title: 'Signup', component: 'SignupPage' },
   ]
-
+  pages:any = this.pagesUser;
   constructor(platform: Platform,
               statusBar: StatusBar, 
               splashScreen: SplashScreen,
@@ -41,7 +46,14 @@ export class MyApp {
       text => {
         this.auth.getUserName((username) => {
           this.username = username;
-          this.loggedIn = false;
+          if(this.username != 'You are not logged in'){
+            this.auth.isAdmin((isAdmin) =>{
+              if(isAdmin)
+                this.pages = this.pagesAdmin;
+              else
+                this.pages = this.pagesUser;
+            })
+          }
         }); 
     });
 
@@ -51,10 +63,16 @@ export class MyApp {
         this.rootPage = MainPage;
         this.auth.getUserName((username) => {
           this.username = username;
-          this.loggedIn = true;
         }); 
       } 
     });
+    
+    this.auth.isAdmin((isAdmin) =>{
+      if(isAdmin)
+        this.pages = this.pagesAdmin;
+      else
+        this.pages = this.pagesUser;
+    })
   }
   
   logOut(){

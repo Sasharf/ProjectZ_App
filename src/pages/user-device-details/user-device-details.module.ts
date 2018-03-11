@@ -9,5 +9,8 @@ import { UserDeviceDetailsPage } from './user-device-details';
   imports: [
     IonicPageModule.forChild(UserDeviceDetailsPage),
   ],
+  entryComponents: [
+    UserDeviceDetailsPage,
+  ]
 })
 export class UserDeviceDetailsPageModule {}

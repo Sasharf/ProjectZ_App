@@ -53,9 +53,9 @@ export class ProfileAddPage {
       name: ['', Validators.required],
       plantFamily: ['', Validators.required],
       plantId: ['', Validators.required],
-      sunNeeds: ['50', Validators.required],
-      heatMin: ["30", Validators.required],
-      heatMax: ["60", Validators.required],
+      sunNeeds: ['', Validators.required],
+      heatMin: ["10", Validators.required],
+      heatMax: ["30", Validators.required],
       moistMin: ["30", Validators.required],
       moistMax: ["60", Validators.required],
     });
@@ -192,7 +192,7 @@ export class ProfileAddPage {
         name: this.formCasual.controls['name'].value,
         email: this.email,
         plant: this.formCasual.controls['plantId'].value,
-        sunNeeds: this.sunAdvancedConvert(this.formCasual.controls['sunNeeds'].value),
+        sunNeeds: this.formCasual.controls['sunNeeds'].value,
         heatMin: 20,
         heatMax: 40,
         moistMin: this.soilAdvancedConvert("min", this.form.controls['moistMin'].value),
@@ -254,13 +254,15 @@ export class ProfileAddPage {
 
   sunAdvancedConvert(val) {
     if (val == "Full") {
-      return 30;
+      return 100;
     }
-    else if (val == "Patial") {
+    else if (val == "Partial") {
       return 60;
     }
-    else {
-      return 90;
+    else if (val == "Part_sun") {
+      return 85;
     }
+    else
+      return 40;
   }
 }

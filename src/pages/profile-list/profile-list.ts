@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { AuthProvider, ProfileProvider } from '../../providers/providers';
+import { AuthProvider, ProfileProvider, MessageProvider } from '../../providers/providers';
 import { Item } from '../../models/item';
 
 @IonicPage()
@@ -12,21 +12,33 @@ export class ProfileListPage {
 
   email: any;
   profiles: Item[] = [];
+  gotServerAnswer:any = false;
+  gotErrorFromServer: any = false;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
     private authProvider: AuthProvider,
-    private profileProvider: ProfileProvider) {
+    private profileProvider: ProfileProvider,
+    private messageProvider: MessageProvider) {
 
-      this.authProvider.getEmail((email) => {
-        this.email = email;
-        console.log(email);
-        this.profileProvider.getProfilesByEmail(this.email).subscribe(data => {
-          if(data["success"])
-            this.profiles = data["answer"];
-        })
-      });
+    this.authProvider.getEmail((email) => {
+      this.email = email;
+    });
+  }
+
+  ionViewDidEnter() {
+    this.profileProvider.getProfilesByEmail(this.email).subscribe(data => {
+      if(data["success"])
+        this.profiles = data["answer"];
+        this.gotServerAnswer = true;
+        this.gotErrorFromServer = false;
+    },
+    (err) => {
+      this.messageProvider.presentAlertOk('Error!', 'Cant reach server try a little bit later')
+      this.gotServerAnswer = true;
+      this.gotErrorFromServer = true;
+    });
   }
 
   addItem() {

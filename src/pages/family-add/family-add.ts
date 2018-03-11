@@ -66,7 +66,6 @@ export class FamilyAddPage {
   }
 
   getProfileImageStyle() {
-    console.log("image changed")
     return 'url(' + this.form.controls['profilePic'].value + ')'
   }
 
@@ -81,9 +80,7 @@ export class FamilyAddPage {
       description: this.form.controls['description'].value,
       pic: this.form.controls['profilePic'].value
     }
-    console.log(newFamily);
     this.familyProvider.addFamily(newFamily).subscribe(data => {
-      console.log(data["message"])
       if (data["success"]) {
         let toast = this.toastCtrl.create({
           message: data["message"],

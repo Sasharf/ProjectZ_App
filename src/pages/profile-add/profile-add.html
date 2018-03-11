@@ -36,20 +36,9 @@
 
 <ion-content [ngSwitch]="profileType">
 
-  <!-- -------------------------------------------- Casual --------------------------- -->
+  <!-- -------------------------------------------- Casual ------------------------------------------------------------------- -->
   <ion-list no-lines *ngSwitchCase="'Casual'">
     <form *ngIf="formCasual" [formGroup]="formCasual" (ngSubmit)="createItem()">
-      <!-- <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImageCasual($event)"
-      />
-      <div class="profile-image-wrapper" (click)="getPictureCasual()">
-        <div class="profile-image-placeholder" *ngIf="!this.formCasual.controls.profilePic.value">
-          <ion-icon name="add"></ion-icon>
-          <div>
-            Choose image
-          </div>
-        </div>
-        <div class="profile-image" [style.backgroundImage]="getProfileImageStyleCasual()" *ngIf="this.formCasual.controls.profilePic.value"></div>
-      </div> -->
 
       <ion-list no-lines>
 
@@ -66,11 +55,11 @@
         </ion-item>
 
         <ion-item>
-            <ion-label floating>Plant type</ion-label>
-            <ion-select formControlName="plantId">
-              <ion-option *ngFor="let plant of plants" [value]="plant._id">{{plant.plantName}}</ion-option>
-            </ion-select>
-          </ion-item>
+          <ion-label floating>Plant type</ion-label>
+          <ion-select formControlName="plantId">
+            <ion-option *ngFor="let plant of plants" [value]="plant._id">{{plant.plantName}}</ion-option>
+          </ion-select>
+        </ion-item>
 
         <ion-item>
           <ion-label floating>Soil needs</ion-label>
@@ -84,9 +73,10 @@
         <ion-item>
           <ion-label floating>Sun needs</ion-label>
           <ion-select formControlName="sunNeeds">
-            <ion-option value="Full">Full</ion-option>
-            <ion-option value="Patial">Patial</ion-option>
+            <ion-option value="Full sun">Full sun</ion-option>
+            <ion-option value="Partial sun">Partial sun</ion-option>
             <ion-option value="Shady">Shady</ion-option>
+            <ion-option value="Full shade">Full shade</ion-option>
           </ion-select>
         </ion-item>
 
@@ -94,19 +84,9 @@
     </form>
   </ion-list>
 
-  <!-- -------------------------------------------- Advanced --------------------------- -->
+  <!-- -------------------------------------------- Advanced ---------------------------------------------------------------- -->
   <ion-list no-lines *ngSwitchCase="'Advanced'">
     <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
-      <!-- <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
-      <div class="profile-image-wrapper" (click)="getPicture()">
-        <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
-          <ion-icon name="add"></ion-icon>
-          <div>
-            Choose image
-          </div>
-        </div>
-        <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
-      </div> -->
 
       <ion-list no-lines>
         <ion-item>
@@ -122,15 +102,25 @@
         </ion-item>
 
         <ion-item>
-            <ion-label floating>Plant type</ion-label>
-            <ion-select formControlName="plantId">
-              <ion-option *ngFor="let plant of plants" [value]="plant._id">{{plant.plantName}}</ion-option>
+          <ion-label floating>Plant type</ion-label>
+          <ion-select formControlName="plantId">
+            <ion-option *ngFor="let plant of plants" [value]="plant._id">{{plant.plantName}}</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Sun needs</ion-label>
+            <ion-select formControlName="sunNeeds">
+              <ion-option value="Full sun">Full sun</ion-option>
+              <ion-option value="Partial sun">Partial sun</ion-option>
+              <ion-option value="Shady">Shady</ion-option>
+              <ion-option value="Full shade">Full shade</ion-option>
             </ion-select>
           </ion-item>
       </ion-list>
     </form>
 
-    <ion-list no-lines>
+    <!-- <ion-list no-lines>
       <ion-item>
         Sun needs
         <ion-icon big name="ios-sunny-outline" style="display:initial;"></ion-icon>%
@@ -142,7 +132,7 @@
           <ion-icon range-right small color="myYellow" name="md-sunny"></ion-icon>
         </ion-range>
       </ion-item>
-    </ion-list>
+    </ion-list> -->
 
     <ion-list no-lines>
       <ion-item>
@@ -166,7 +156,7 @@
         <ion-badge item-end color="danger">{{heat.upper}}</ion-badge>
       </ion-item>
       <ion-item>
-        <ion-range dualKnobs="true" [(ngModel)]="heat" min="0" max="100" step="10" color="danger" snaps="true" (ionChange)="heatChanged()">
+        <ion-range dualKnobs="true" [(ngModel)]="heat" min="0" max="50" step="2" color="danger" snaps="true" (ionChange)="heatChanged()">
           <ion-icon range-left small color="danger" name="thermometer"></ion-icon>
           <ion-icon range-right color="danger" name="thermometer"></ion-icon>
         </ion-range>

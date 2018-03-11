@@ -47,6 +47,7 @@ export class LoginPage {
         
       }
       else {
+        this.submitAttempt = false;
         let toast = this.toastCtrl.create({
           message: data["error"],
           duration: 3000,

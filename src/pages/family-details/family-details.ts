@@ -11,7 +11,6 @@ export class FamilyDetailsPage {
   item : any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.item = navParams.get('item');
-    console.log(this.item)
   }
 
   ionViewDidLoad() {

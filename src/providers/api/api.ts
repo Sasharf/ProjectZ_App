@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
@@ -26,11 +26,29 @@ export class ApiProvider {
         reqOpts.params.set(k, params[k]);
       }
     }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        // 'Access-Control-Allow-Origin':  "*",
+        // 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+        // 'Access-Control-Allow-Headers': 'Content-Type'
+        'Access-Control-Allow-Credentials': "true"
+      })
+    };
 
     return this.http.get(this.url + '/' + endpoint, reqOpts);
   }
 
   post(endpoint: string, body: any, reqOpts?: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        // 'Access-Control-Allow-Origin':  "*",
+        // 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+        // 'Access-Control-Allow-Headers': 'Content-Type'
+        // 'Access-Control-Allow-Credentials': "true",
+        
+      })
+    };
+
     return this.http.post(this.url + '/' + endpoint, body, reqOpts);
   }
 

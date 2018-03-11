@@ -12,3 +12,4 @@ export const LoginPage = 'LoginPage';
 export const Tab1Root = 'HomePage';
 export const Tab2Root = 'UserDeviceListPage';
 export const Tab3Root = 'ProfileListPage';
+export const Tab4Root = 'ExplorePage';

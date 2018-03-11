@@ -4,7 +4,7 @@
     <ion-title>My Profiles</ion-title>
 
     <ion-buttons end>
-      <button ion-button icon-only (click)="addItem()">
+      <button ion-button icon-only (click)="addItem()" *ngIf="gotServerAnswer && !gotErrorFromServer">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
@@ -33,5 +33,7 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-  <p padding *ngIf="profiles.length==0">You didnt add profiles yet, press on the plus above to add one.</p>
+  <p *ngIf="!gotServerAnswer" padding>Loading profile list, please wait...</p>
+  <p *ngIf="gotServerAnswer && !gotErrorFromServer && profiles.length==0" padding>You didnt add profiles yet, press on the plus above to add one.</p>
+  <p *ngIf="gotServerAnswer && gotErrorFromServer" padding>Error occurred try again later</p>
 </ion-content>

@@ -95,12 +95,12 @@ export class AuthProvider {
     });
   }
 
-  isAdmin() {
+  isAdmin(callback) {
     this.loadUser(() => {
-      if (this.user !== undefined && this.user.role === 'admin')
-        return true;
+      if (this.user !== null && this.user.role === 'admin')
+        callback(true);
       else
-        return false;
+      callback(false);
     });
   }
 
